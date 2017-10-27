@@ -1,6 +1,7 @@
 import pygame, time, math
 #screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN)
 screen = pygame.display.set_mode((1000,800))
+screen_mode = 0 #toggle fullscreen
 clock = pygame.time.Clock()
 FRAMES_PER_SECOND = 30
 deltat = clock.tick(FRAMES_PER_SECOND)
@@ -11,8 +12,8 @@ stickman = pygame.image.load('stickman.png')
 stickman = pygame.transform.scale(stickman, (20, 30))
 screen.blit(stickman, (50, 100))
 
-dir_x = 1
-dir_y = 1
+dir_x = 500
+dir_y = 350
 
 jump = 0
 jumpdir = 0
@@ -38,21 +39,46 @@ while True:
     if keys[pygame.K_ESCAPE]:
         pygame.quit()
         quit()
+#toggle fullscreen        
+    if keys[pygame.K_F11]:
+        if screen_mode == 0:
+            screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN)
+            screen_mode += 1
+        else:
+            screen = pygame.display.set_mode((width,height))
+            screen_mode += -1
         
 #check borders    
-    if dir_x > 900:
+#    if dir_x > 900:
+#        dir_x = 900
+#        print("x+border passed")
+#    if dir_x < 100:
+#        dir_x = 100
+#        print("x-border passed")
+#    if dir_y > 600:
+#        dir_y = 600
+#        print("y+border passed")
+#    if dir_y < 100:
+#        dir_y = 100
+#        print("y-border passed")
+if dir_x > 900 and 100 < dir_y < 300 or 400 < dir_y < 600:
         dir_x = 900
-        print("x+border passed")
-    if dir_x < 100:
+        print("x-border passed")
+    if dir_x == 900 and 300 < dir_y < 400:
+            print("door")
+    if dir_x < 100 and 100 < dir_y < 300 or 400 < dir_y < 600:
         dir_x = 100
         print("x-border passed")
+    if dir_x == 100 and 300 < dir_y < 400:
+            print("door")
+    if dir_x < 100 or dir_x > 900:
+                print("Next room!")
+                pygame.quit()
+                quit()
     if dir_y > 600:
         dir_y = 600
-        print("y+border passed")
     if dir_y < 100:
         dir_y = 100
-        print("y-border passed")
-
 
         
 #check door left
@@ -73,7 +99,7 @@ while True:
         if jumpaltitude == 0:
             jumpdir = 0
             jump = 0
-        dir_y +=jumpaltitude
+        dir_y +=jumpaltitude + 1
     if not jumpaltitude ==0:
         print(jumpaltitude)
 
