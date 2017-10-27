@@ -61,12 +61,12 @@ while True:
 #    if dir_y < 100:
 #        dir_y = 100
 #        print("y-border passed")
-if dir_x > 900 and 100 < dir_y < 300 or 400 < dir_y < 600:
+    if dir_x > 900 and 0 < dir_y < 300 or 400 < dir_y < 1000:
         dir_x = 900
         print("x-border passed")
     if dir_x == 900 and 300 < dir_y < 400:
             print("door")
-    if dir_x < 100 and 100 < dir_y < 300 or 400 < dir_y < 600:
+    if dir_x < 100 and 0 < dir_y < 300 or 400 < dir_y < 1000:
         dir_x = 100
         print("x-border passed")
     if dir_x == 100 and 300 < dir_y < 400:
@@ -100,7 +100,7 @@ if dir_x > 900 and 100 < dir_y < 300 or 400 < dir_y < 600:
             jumpdir = 0
             jump = 0
         dir_y +=jumpaltitude + 1
-    if not jumpaltitude ==0:
+    if not jumpaltitude == 0:
         print(jumpaltitude)
 
 #set Position        
