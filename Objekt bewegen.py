@@ -27,13 +27,13 @@ while True:
 #check keys
     keys = pygame.key.get_pressed()  #checking pressed keys
     if keys[pygame.K_w]:
-        dir_y = dir_y-2
+        dir_y = dir_y-0.3
     if keys[pygame.K_s]:
-        dir_y = dir_y+2
+        dir_y = dir_y+0.3
     if keys[pygame.K_a]:
-        dir_x = dir_x-2
+        dir_x = dir_x-0.3
     if keys[pygame.K_d]:
-        dir_x = dir_x+2
+        dir_x = dir_x+0.3
     if keys[pygame.K_SPACE] and jumpaltitude == 0:
         jump = 1
     if keys[pygame.K_ESCAPE]:
@@ -45,7 +45,7 @@ while True:
             screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN)
             screen_mode += 1
         else:
-            screen = pygame.display.set_mode((width,height))
+            screen = pygame.display.set_mode((1000,800))
             screen_mode += -1
         
 #check borders    
