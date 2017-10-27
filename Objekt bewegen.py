@@ -82,11 +82,11 @@ if dir_x > 900 and 100 < dir_y < 300 or 400 < dir_y < 600:
 
         
 #check door left
-    if 300 < dir_y < 400 and dir_x < 150:
-        print("door")
+#    if 300 < dir_y < 400 and dir_x < 150:
+#        print("door")
 #check door right
-    if 300 < dir_y < 400 and dir_x > 850:
-        print("door")
+#    if 300 < dir_y < 400 and dir_x > 850:
+#        print("door")
 
 #do jump cycle
     if jump == 1 and jumpdir == 0:
