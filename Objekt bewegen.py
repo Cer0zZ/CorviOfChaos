@@ -12,6 +12,10 @@ stickman = pygame.image.load('stickman.png')
 stickman = pygame.transform.scale(stickman, (20, 30))
 screen.blit(stickman, (50, 100))
 
+
+
+
+
 dir_x = 500
 dir_y = 350
 
@@ -48,45 +52,40 @@ while True:
             screen = pygame.display.set_mode((1000,800))
             screen_mode += -1
         
-#check borders    
-#    if dir_x > 900:
-#        dir_x = 900
-#        print("x+border passed")
-#    if dir_x < 100:
-#        dir_x = 100
-#        print("x-border passed")
-#    if dir_y > 600:
-#        dir_y = 600
-#        print("y+border passed")
-#    if dir_y < 100:
-#        dir_y = 100
-#        print("y-border passed")
-    if dir_x > 900 and 0 < dir_y < 300 or 400 < dir_y < 1000:
+#check borders left right   
+    if dir_x > 900 and dir_y < 240 or dir_x > 900 and dir_y > 360:
         dir_x = 900
-        print("x-border passed")
-    if dir_x == 900 and 300 < dir_y < 400:
-            print("door")
-    if dir_x < 100 and 0 < dir_y < 300 or 400 < dir_y < 1000:
+        print("x+border passed")
+    if dir_x < 100 and dir_y < 240 or dir_x < 100 and dir_y > 360:
         dir_x = 100
         print("x-border passed")
-    if dir_x == 100 and 300 < dir_y < 400:
-            print("door")
-    if dir_x < 100 or dir_x > 900:
-                print("Next room!")
-                pygame.quit()
-                quit()
+        
+#check door borders left right  
+    if dir_x > 950 and dir_y > 250 or dir_x > 950 and dir_y < 350:
+        dir_x = 950
+        print("x+border passed")
+    if dir_x < 50 and dir_y > 250 or dir_x < 50 and dir_y < 350:
+        dir_x = 50
+        print("x-border passed")
+        
+#check borders top bottom          
     if dir_y > 600:
         dir_y = 600
+        print("y+border passed")
     if dir_y < 100:
         dir_y = 100
+        print("y-border passed")
+
+    if dir_x < 100 and dir_y > 350 or dir_x > 900 and dir_y > 350:
+        dir_y = 350
+        print("y+border passed")
+    if dir_x < 100 and dir_y < 250 or dir_x > 900 and dir_y < 250:
+        dir_y = 250
+        print("y-border passed")
+        
+#    print(dir_y,dir_x)
 
         
-#check door left
-#    if 300 < dir_y < 400 and dir_x < 150:
-#        print("door")
-#check door right
-#    if 300 < dir_y < 400 and dir_x > 850:
-#        print("door")
 
 #do jump cycle
     if jump == 1 and jumpdir == 0:
