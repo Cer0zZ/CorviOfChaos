@@ -1,6 +1,8 @@
 import pygame, time, math
+hight = 1000
+weight = 800
 #screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN)
-screen = pygame.display.set_mode((1000,800))
+screen = pygame.display.set_mode((hight,weight))
 screen_mode = 0 #toggle fullscreen
 clock = pygame.time.Clock()
 FRAMES_PER_SECOND = 30
@@ -64,7 +66,7 @@ while True:
             screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN)
             screen_mode += 1
         else:
-            screen = pygame.display.set_mode((1000,800))
+            screen = pygame.display.set_mode((hight,weight))
             screen_mode += -1
             
 ##################################################################################################
