@@ -28,6 +28,11 @@ while True:
 
     pygame.event.poll()
 
+
+    
+##################################################################################################
+#§§§§§§§§§§§§§§§§§§§§§---Check keys of the Keyboard
+################################################################################################## 
 #check keys
     keys = pygame.key.get_pressed()  #checking pressed keys
     if keys[pygame.K_w]:
@@ -43,6 +48,7 @@ while True:
     if keys[pygame.K_ESCAPE]:
         pygame.quit()
         quit()
+
 #toggle fullscreen        
     if keys[pygame.K_F11]:
         if screen_mode == 0:
@@ -51,7 +57,10 @@ while True:
         else:
             screen = pygame.display.set_mode((1000,800))
             screen_mode += -1
-        
+            
+##################################################################################################
+#§§§§§§§§§§§§§§§§§§§§§---Check Borders of the Room
+##################################################################################################        
 #check borders left right   
     if dir_x > 900 and dir_y < 240 or dir_x > 900 and dir_y > 360:
         dir_x = 900
@@ -75,7 +84,7 @@ while True:
     if dir_y < 100:
         dir_y = 100
         print("y-border passed")
-
+#check door borders top bottom  
     if dir_x < 100 and dir_y > 350 or dir_x > 900 and dir_y > 350:
         dir_y = 350
         print("y+border passed")
@@ -85,7 +94,9 @@ while True:
         
 #    print(dir_y,dir_x)
 
-        
+##################################################################################################
+#§§§§§§§§§§§§§§§§§§§§§---Check if Jump --> if yes, jump
+##################################################################################################        
 
 #do jump cycle
     if jump == 1 and jumpdir == 0:
