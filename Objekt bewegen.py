@@ -5,7 +5,7 @@ width = 800
 screen = pygame.display.set_mode((hight,width))
 screen_mode = 0 #toggle fullscreen
 clock = pygame.time.Clock()
-FRAMES_PER_SECOND = 30
+FRAMES_PER_SECOND = 60
 deltat = clock.tick(FRAMES_PER_SECOND)
 
 pygame.display.set_caption('Testscript #001')
@@ -14,8 +14,8 @@ stickman = pygame.image.load('stickman.png')
 stickman = pygame.transform.scale(stickman, (20, 30))
 screen.blit(stickman, (50, 100))
 
-
-
+background = pygame.image.load('klassenzimmer_test.png')
+screen.blit(background, [0, 0])
 
 
 dir_x = 500
@@ -26,13 +26,13 @@ jumpdir = 0
 jumpaltitude = 0
 
 topborder = 100
-bottomborder = 700
+bottomborder = 610
 leftborder = 100
-rightborder = 900
+rightborder = 870
 
 doordepht = 50
-doortop = 250
-doorbottom = 350
+doortop = 350
+doorbottom = 380
 
 
 while True:
@@ -47,13 +47,13 @@ while True:
 #check keys
     keys = pygame.key.get_pressed()  #checking pressed keys
     if keys[pygame.K_w]:
-        dir_y = dir_y-0.3
+        dir_y = dir_y-3
     if keys[pygame.K_s]:
-        dir_y = dir_y+0.3
+        dir_y = dir_y+3
     if keys[pygame.K_a]:
-        dir_x = dir_x-0.3
+        dir_x = dir_x-3
     if keys[pygame.K_d]:
-        dir_x = dir_x+0.3
+        dir_x = dir_x+3
     if keys[pygame.K_SPACE] and jumpaltitude == 0:
         jump = 1
     if keys[pygame.K_ESCAPE]:
@@ -83,10 +83,10 @@ while True:
 #check door borders left right  
     if dir_x > (rightborder+doordepht) and dir_y > doortop or dir_x > (rightborder+doordepht) and dir_y < doorbottom:
         dir_x = (rightborder+doordepht)
-        print("x+border passed")
+        print("x+border passed: Next Room")
     if dir_x < (leftborder-doordepht) and dir_y > doortop or dir_x < (leftborder-doordepht) and dir_y < doorbottom:
         dir_x = (leftborder-doordepht)
-        print("x-border passed")
+        print("x-border passed: Next Room")
         
 #check borders top bottom          
     if dir_y > bottomborder:
@@ -126,6 +126,7 @@ while True:
 
 #set Position        
     screen.fill((0, 0, 0))
+    screen.blit(background, [0, 0])
     screen.blit(stickman, (dir_x, dir_y))
     pygame.display.flip()
 
